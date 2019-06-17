@@ -1,20 +1,22 @@
 data "aws_security_groups" "inbound" {
-  filter {
-    name   = "group-name"
-    values = ["cvo_tf_inbound"]
-  }
+   filter {
+       name   = "group-name"
+       values = ["cvo_tf_inbound"]
+   }
 
-  filter {
-    name   = "vpc-id"
-    values = ["${aws_vpc.vpc.id}"]
-  }
+    filter {
+        name   = "vpc-id"
+        values = ["${aws_vpc.vpc.id}"]
+    }
+    depends_on = ["aws_security_group.inbound_rules"]
 }
 
 data "aws_security_groups" "local" {
-  filter {
-    name   = "group-name"
-    values = ["local_secgroup"]
-  }
+    filter {
+        name   = "group-name"
+        values = ["local_secgroup"]
+    }
+    depends_on = ["aws_security_group.local_secgroup"]
 }
 
 

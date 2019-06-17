@@ -1,4 +1,10 @@
+variable "custom_ssh" {
+   default = ["165.225.104.55/32"]
+}
 
+variable "allow_world" {
+   default = ["0.0.0.0/0", "165.225.104.55/32"]
+}
 
 variable "region" {
    type        = "string"

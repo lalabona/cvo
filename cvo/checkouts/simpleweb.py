@@ -1,5 +1,6 @@
 from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
 import SocketServer
+import os;
 
 class S(BaseHTTPRequestHandler):
     def _set_headers(self):
@@ -9,8 +10,8 @@ class S(BaseHTTPRequestHandler):
 
     def do_GET(self):
         self._set_headers()
-        import os;
-        self.wfile.write("".join(["<html><body><h1>Reader</h1><h2>Mounts:", os.popen("mount | grep nfs").read(), "/<h2>",  "<h2>CWD :", os.popen("pwd").read(), "</h2><pre>", os.popen("ls -ltr").read(), "</pre></body></html>"]))
+        self.wfile.write("".join(["<html><body><h1>Reader</h1><h2>Date :", os.popen("date").read(), "</h2></body></html>"]))
+        self.wfile.write("".join(["<html><body><h4>Mounts:", os.popen("mount | egrep -o '(^.*?\:.*? on .*? type nfs.)'").read(), "/<h4>",  "<h2>CWD :", os.popen("pwd").read(), "</h2><pre>", os.popen("ls -ltr").read(), "</pre></body></html>"]))
 
     def do_POST(self):
         # Doesn't do anything with posted data

@@ -14,14 +14,13 @@ output "r1_subnet" {
    description              = "Subnet for R1 instnaces."
 }
 
-output "write_unixclient_ip" {
-   value                    = "${aws_instance.wclient.public_ip}"
-   description              = "Unix client for testing."
+output "occm_public_ip" {
+   value                    = "${aws_instance.occm.public_ip}"
+   description              = "Oncommand cloud manager public IP testing."
 }
 
-/*
-output "read_unixclient_ip" {
-   value                    = "${aws_instance.rclient.public_ip}"
+output "unixclient_ip" {
+   value                    = "${aws_instance.client.public_ip}"
    description              = "Unix client for testing."
 }
 
@@ -30,8 +29,3 @@ output "ids" {
   value       = "${aws_instance.occm.id}"
 }
 
-output "ip" {
-  description = "List of IPs of instances"
-  value       = "${aws_instance.occm.public_ip}"
-}
-*/
