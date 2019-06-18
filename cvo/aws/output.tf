@@ -19,8 +19,14 @@ output "occm_public_ip" {
    description              = "Oncommand cloud manager public IP testing."
 }
 
-output "unixclient_ip" {
-   value                    = "${aws_instance.client.public_ip}"
+output "write_unixclient_ip" {
+   value                    = "${aws_instance.wclient.public_ip}"
+   description              = "Unix client for testing."
+}
+
+
+output "read_unixclient_ip" {
+   value                    = "${aws_instance.rclient.public_ip}"
    description              = "Unix client for testing."
 }
 
