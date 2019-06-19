@@ -8,10 +8,10 @@ resource "aws_instance" "wclient" {
     key_name                    = "${var.key_name}"
     associate_public_ip_address = "true"
     iam_instance_profile        = "${aws_iam_instance_profile.occm_instance_profile.id}"
-    tags {
-        Name = "Writer - Unix client",
-        "Owned By" =  "${var.admin}",
-        "Deployed Using" = "Terraform",
+    tags = {
+        Name = "Writer - Unix client"
+        "Owned By" =  "${var.admin}"
+        "Deployed Using" = "Terraform"
     }
 
     connection {

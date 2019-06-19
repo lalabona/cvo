@@ -8,14 +8,13 @@ resource "aws_instance" "occm" {
     key_name                    = "${var.key_name}"
     associate_public_ip_address = "true"
     iam_instance_profile        = "${aws_iam_instance_profile.occm_instance_profile.id}"
-    tags {
-        Name = "OnCommand Cloud Manager",
-        "Owned By" =  "${var.admin}",
-        "Deployed Using" = "Terraform",
-        "Provisioned Using" = "CHEF",
+    tags = {
+        Name = "OnCommand Cloud Manager"
+        "Owned By" =  "${var.admin}"
+        "Deployed Using" = "Terraform"
+        "Provisioned Using" = "CHEF"
     }
 
-/*
     #For now creating the OCCM manually.
     provisioner "local-exec" {
         command =<<EOF
@@ -26,7 +25,6 @@ resource "aws_instance" "occm" {
                                                                     portalUserName=${var.portal_user_name}'
         EOF
     }    
-*/
 
     depends_on = [
         "aws_iam_role_policy.occm_role_policy",

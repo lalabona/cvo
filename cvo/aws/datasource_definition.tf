@@ -23,19 +23,13 @@ data "aws_security_groups" "local" {
 data "aws_subnet" "r1" {
     id = "${aws_subnet.r1.id}"
 
-    filter { name   = "tag:Name"
-             values = ["Subnet for R1 site hosting."]
-    }
     depends_on = ["aws_subnet.r1"]
 }
 
 /*
 data "aws_subnet" "r2" {
 
-    vpc_id = "${data.aws_vpc.selected.id}"
-    filter { name   = "tag:Name"
-             values = ["r2_subnet"]
-    }      
+    id = "${aws_subnet.r2.id}"
     depends_on = ["aws_subnet.r2"]
 }
 
